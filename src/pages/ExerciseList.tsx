@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextStyle } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { connect, useSelector } from 'react-redux';
 import { CustomisedExercise } from '../domain/models/CustomisedExercise.model';
@@ -26,13 +26,11 @@ const ExerciseList = () => {
             key={item.id}
             onPress={() => {
               dispatch(setSelectedExercise(item));
-              console.log('dispatched ', item);
-
               navigation.navigate('Detail');
             }}
-            style={styles.listItem}
+            style={StyleSheet.flatten([styles.listItem, {opacity: item.completed ? 0.5 : 1}])}
           >
-            <Text numberOfLines={1} style={styles.text}>
+            <Text numberOfLines={1} style={StyleSheet.flatten([styles.text, {fontStyle: item.completed  ? 'italic': 'normal'} as TextStyle])}>
               {item.reps ?? `${item.duration} min`} {item.name}
             </Text>
           </TouchableOpacity>

@@ -58,14 +58,14 @@ const workoutInitialState: WorkoutState = {
       birthdate: '1.2.3',
       firstname: 'Bas',
       id: '1234',
-      images: [],
+      images: ['https://via.placeholder.com/300', 'https://via.placeholder.com/300', 'https://via.placeholder.com/300'],
       lastname: 'Yuksel',
       startWeight: 100
     },
     assigner: {
       id: '5676',
-      image: '',
-      name: 'Jessica'
+      name: 'Jessica',
+      image: 'https://via.placeholder.com/300',
     },
     workoutSessions: [{
       day: 0,
@@ -74,7 +74,7 @@ const workoutInitialState: WorkoutState = {
         completed: false,
         description: 'just do it',
         id: '123',
-        images: [],
+        images: ['https://via.placeholder.com/300', 'https://via.placeholder.com/300', 'https://via.placeholder.com/300'],
         name: 'Push Ups',
         videos: []
       },
@@ -83,7 +83,7 @@ const workoutInitialState: WorkoutState = {
         completed: false,
         description: 'just do it',
         id: '3345',
-        images: [],
+        images: ['https://via.placeholder.com/300', 'https://via.placeholder.com/300', 'https://via.placeholder.com/300'],
         name: 'Sit Ups',
         videos: []
       },
@@ -92,7 +92,7 @@ const workoutInitialState: WorkoutState = {
         completed: false,
         description: 'just do it',
         id: '33435',
-        images: [],
+        images: ['https://via.placeholder.com/300', 'https://via.placeholder.com/300', 'https://via.placeholder.com/300'],
         name: 'Planking',
         videos: []
       }]
@@ -102,8 +102,17 @@ const workoutInitialState: WorkoutState = {
 
 const workoutReducer = createReducer(workoutInitialState, {
   SET_TRAINING_PLAN(state: WorkoutState, action: PayloadAction<TrainingPlan>){ state.trainingPlan = action.payload},
-  SET_EXERCISE_COMPLETED(state: WorkoutState, action: PayloadAction<CustomisedExercise>){ state.trainingPlan?.workoutSessions[0].exercises.forEach((exercise:CustomisedExercise)=> {if(exercise.id === action.payload.id){ exercise.completed = true;}})},
-  SET_EXERCISE_INCOMPLETE(state: WorkoutState, action: PayloadAction<CustomisedExercise>){  state.trainingPlan?.workoutSessions[0].exercises.forEach((exercise:CustomisedExercise)=> {if(exercise.id === action.payload.id){ exercise.completed = false;}})},
+  SET_EXERCISE_COMPLETED(state: WorkoutState, action: PayloadAction<CustomisedExercise>){
+    state.trainingPlan?.workoutSessions[0].exercises.forEach((exercise:CustomisedExercise)=> {if(exercise.id === action.payload.id){ exercise.completed = true;}})
+    console.log('payload', action.payload);
+    if(state.selectedExercise )state.selectedExercise.completed = true;
+    },
+  SET_EXERCISE_INCOMPLETE(state: WorkoutState, action: PayloadAction<CustomisedExercise>){
+     state.trainingPlan?.workoutSessions[0].exercises.forEach((exercise:CustomisedExercise)=> {if(exercise.id === action.payload.id){ exercise.completed = false;}})
+     console.log('payload', action.payload);
+     if(state.selectedExercise) state.selectedExercise.completed = false;
+
+    },
   LOGOUT(state: WorkoutState, _: Action){ state = workoutInitialState },
   SET_SELECTED_EXERCISE(state: WorkoutState, action: PayloadAction<CustomisedExercise>){ state.selectedExercise = action.payload; console.log('used', action.payload, 'state became', state.selectedExercise);
   },
