@@ -14,16 +14,17 @@ import { CustomisedExercise } from '../models/CustomisedExercise.model';
 import { useDispatch } from 'react-redux';
 
 
-export const SET_EMAIL = 'auth/SET_EMAIL';
-export const SET_PASSWORD = 'auth/SET_PASSWORD';
-export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
-export const LOGIN_FAIL = 'auth/LOGIN_FAIL';
-export const SET_USER = 'auth/SET_USER';
-export const LOGOUT= 'auth/LOGOUT';
+export const SET_EMAIL = 'SET_EMAIL';
+export const SET_PASSWORD = 'SET_PASSWORD';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const SET_USER = 'SET_USER';
+export const LOGOUT= 'LOGOUT';
 
-export const SET_TRAINING_PLAN = 'workout/SET_TRAINING_PLAN';
-export const SET_EXERCISE_COMPLETED = 'workout/SET_EXERCISE_COMPLETED';
-export const SET_EXERCISE_INCOMPLETE = 'workout/SET_EXERCISE_INCOMPLETE';
+export const SET_TRAINING_PLAN = 'SET_TRAINING_PLAN';
+export const SET_EXERCISE_COMPLETED = 'SET_EXERCISE_COMPLETED';
+export const SET_EXERCISE_INCOMPLETE = 'SET_EXERCISE_INCOMPLETE';
+export const SET_SELECTED_EXERCISE = 'SET_SELECTED_EXERCISE';
 
 export const setEmail = createAction<string>(SET_EMAIL);
 export const setPassword = createAction<string>(SET_PASSWORD);
@@ -35,10 +36,9 @@ export const logout = createAction(LOGOUT);
 export const setTrainingPlan = createAction<TrainingPlan>(SET_TRAINING_PLAN);
 export const setExerciseCompleted = createAction<CustomisedExercise>(SET_EXERCISE_COMPLETED);
 export const setExerciseIncomplete = createAction<CustomisedExercise>(SET_EXERCISE_INCOMPLETE);
+export const setSelectedExercise = createAction<CustomisedExercise>(SET_SELECTED_EXERCISE);
 
-interface AuthState {
-  email: string, password: string, loggedIn: boolean, showError: boolean, user?: User
-}
+interface AuthState { email: string, password: string, loggedIn: boolean, showError: boolean, user?: User}
 
 const authInitialState: AuthState = {email: '', password: '', loggedIn: false, showError: false, user: undefined};
 
@@ -50,17 +50,63 @@ const authReducer = createReducer(authInitialState, {
   SET_USER(state: AuthState, action:PayloadAction<User>){ state.user = action.payload},
   LOGOUT(state: AuthState, _:Action){ state = authInitialState; }
 })
-interface WorkoutState {
-  trainingPlan?: TrainingPlan,
-}
+interface WorkoutState {  trainingPlan?: TrainingPlan,  selectedExercise?: CustomisedExercise, }
 
-const workoutInitialState: WorkoutState = {};
+const workoutInitialState: WorkoutState = {
+  trainingPlan: {
+    assignee: {
+      birthdate: '1.2.3',
+      firstname: 'Bas',
+      id: '1234',
+      images: [],
+      lastname: 'Yuksel',
+      startWeight: 100
+    },
+    assigner: {
+      id: '5676',
+      image: '',
+      name: 'Jessica'
+    },
+    workoutSessions: [{
+      day: 0,
+      exercises: [{
+        reps: 20,
+        completed: false,
+        description: 'just do it',
+        id: '123',
+        images: [],
+        name: 'Push Ups',
+        videos: []
+      },
+      {
+        reps: 100,
+        completed: false,
+        description: 'just do it',
+        id: '3345',
+        images: [],
+        name: 'Sit Ups',
+        videos: []
+      },
+      {
+        duration: 45,
+        completed: false,
+        description: 'just do it',
+        id: '33435',
+        images: [],
+        name: 'Planking',
+        videos: []
+      }]
+    }]
+  }
+};
 
 const workoutReducer = createReducer(workoutInitialState, {
   SET_TRAINING_PLAN(state: WorkoutState, action: PayloadAction<TrainingPlan>){ state.trainingPlan = action.payload},
-  SET_EXERCISE_COMPLETED(state: WorkoutState, action: PayloadAction<CustomisedExercise>){ /* find exercise for today's workout, and set it completed */},
-  SET_EXERCISE_INCOMPLETE(state: WorkoutState, action: PayloadAction<CustomisedExercise>){ /* find exercise for today's workout, and set it completed */},
+  SET_EXERCISE_COMPLETED(state: WorkoutState, action: PayloadAction<CustomisedExercise>){ state.trainingPlan?.workoutSessions[0].exercises.forEach((exercise:CustomisedExercise)=> {if(exercise.id === action.payload.id){ exercise.completed = true;}})},
+  SET_EXERCISE_INCOMPLETE(state: WorkoutState, action: PayloadAction<CustomisedExercise>){  state.trainingPlan?.workoutSessions[0].exercises.forEach((exercise:CustomisedExercise)=> {if(exercise.id === action.payload.id){ exercise.completed = false;}})},
   LOGOUT(state: WorkoutState, _: Action){ state = workoutInitialState },
+  SET_SELECTED_EXERCISE(state: WorkoutState, action: PayloadAction<CustomisedExercise>){ state.selectedExercise = action.payload; console.log('used', action.payload, 'state became', state.selectedExercise);
+  },
 })
 
 const rootReducer =  combineReducers({

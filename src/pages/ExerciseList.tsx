@@ -1,59 +1,20 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { connect, useSelector } from 'react-redux';
 import { CustomisedExercise } from '../domain/models/CustomisedExercise.model';
-import { RootState, setExerciseCompleted, setTrainingPlan, useAppDispatch } from '../domain/state/Redux';
-import { WorkoutSession } from '../domain/models/WorkoutSession.model';
+import { RootState, useAppDispatch, setSelectedExercise } from '../domain/state/Redux';
+import { Exercise } from '../domain/models/Exercise.model';
 
 const connector = connect();
 
-const ItemList = () => {
-  const todayIndex = 0;
-  const items = useSelector((state: RootState) => state.workout.trainingPlan?.workoutSessions.find((workoutSession: WorkoutSession)=> workoutSession.day === todayIndex))?.exercises;
+const ExerciseList = () => {
+  const items = useSelector((state: RootState) => state.workout.trainingPlan?.workoutSessions[0].exercises)
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    if (!items?.length) {
-      dispatch(
-        setTrainingPlan({
-          assignee: {
-            birthdate: '1.2.3',
-            firstname: 'Bas',
-            id: '1234',
-            images: [],
-            lastname: 'Yuksel',
-            startWeight: 100
-          },
-          assigner: {
-            id: '5676',
-            image: '',
-            name: 'Jessica'
-          },
-          workoutSessions: [{
-            day: 0,
-            exercises: [{
-              completed: false,
-              description: 'just do it',
-              id: '123',
-              images: [],
-              name: 'pushups',
-              videos: []
-            }, {
-              completed: false,
-              description: 'just do it',
-              id: '3345',
-              images: [],
-              name: 'situps',
-              videos: []
-            }]
-          }]
-        })
-      );
-    }
-  }, [dispatch, items]);
-
   const navigation = useNavigation();
+
+
   return (
     <View style={styles.wrapper}>
       <FlatList
@@ -64,13 +25,15 @@ const ItemList = () => {
           <TouchableOpacity
             key={item.id}
             onPress={() => {
-              dispatch(setExerciseCompleted(item));
+              dispatch(setSelectedExercise(item));
+              console.log('dispatched ', item);
+
               navigation.navigate('Detail');
             }}
             style={styles.listItem}
           >
             <Text numberOfLines={1} style={styles.text}>
-              {item.name}
+              {item.reps ?? `${item.duration} min`} {item.name}
             </Text>
           </TouchableOpacity>
         )}
@@ -80,7 +43,7 @@ const ItemList = () => {
   );
 };
 
-export default connector(ItemList);
+export default connector(ExerciseList);
 
 const styles = StyleSheet.create({
   contentContainerStyle: {

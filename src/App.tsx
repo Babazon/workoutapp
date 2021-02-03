@@ -1,55 +1,18 @@
-import { NavigationContainer } from '@react-navigation/native';
-import {
-  createStackNavigator,
-  StackNavigationOptions
-} from '@react-navigation/stack';
 import React from 'react';
-import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { store } from './domain/state/Redux';
-import ItemDetail from './pages/ItemDetail';
-import ItemList from './pages/ItemList';
+import { Navigator } from './navigation/Navigator';
 
-const StackNavigator = createStackNavigator();
 
-class App extends React.Component {
-  render() {
+const App = ()=> {
     return (
       <Provider store={store}>
-        <NavigationContainer>
-          <StatusBar barStyle="dark-content" />
-          <StackNavigator.Navigator initialRouteName="List">
-            <StackNavigator.Screen
-              name="List"
-              component={ItemList}
-              options={{
-                ...sharedHeaderOptions,
-              }}
-            />
-            <StackNavigator.Screen
-              name="Detail"
-              component={ItemDetail}
-              options={{
-                ...sharedHeaderOptions,
-              }}
-            />
-          </StackNavigator.Navigator>
-        </NavigationContainer>
+          <Navigator/>
       </Provider>
     );
-  }
 }
 
-const sharedHeaderOptions: Partial<StackNavigationOptions> = {
-  headerBackTitle: 'Back',
-  headerTintColor: '#fff',
-  headerTitleStyle: {
-    fontWeight: 'bold',
-  },
-  headerStyle: {
-    backgroundColor: 'lightgreen',
-  },
-};
+
 
 export default App;
