@@ -1,23 +1,54 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
-import {connect, useDispatch, useSelector} from 'react-redux';
-import {loadItems, RootState, selectItem} from '../state/Redux';
-import {Item} from '../state/Item.model';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { connect, useSelector } from 'react-redux';
+import { CustomisedExercise } from '../domain/models/CustomisedExercise.model';
+import { RootState, setExerciseCompleted, setTrainingPlan, useAppDispatch } from '../domain/state/Redux';
+import { WorkoutSession } from '../domain/models/WorkoutSession.model';
 
 const connector = connect();
 
 const ItemList = () => {
-  const items = useSelector((state: RootState) => state.items) ?? [];
-  const dispatch = useDispatch();
+  const todayIndex = 0;
+  const items = useSelector((state: RootState) => state.workout.trainingPlan?.workoutSessions.find((workoutSession: WorkoutSession)=> workoutSession.day === todayIndex))?.exercises;
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    if (items.length === 0) {
+    if (!items?.length) {
       dispatch(
-        loadItems([
-          {id: '1', label: 'One', addresses: ['Munich', 'Berlin']},
-          {id: '2', label: 'Two', addresses: ['Copenhagen', 'Stockholm']},
-        ] as Item[]),
+        setTrainingPlan({
+          assignee: {
+            birthdate: '1.2.3',
+            firstname: 'Bas',
+            id: '1234',
+            images: [],
+            lastname: 'Yuksel',
+            startWeight: 100
+          },
+          assigner: {
+            id: '5676',
+            image: '',
+            name: 'Jessica'
+          },
+          workoutSessions: [{
+            day: 0,
+            exercises: [{
+              completed: false,
+              description: 'just do it',
+              id: '123',
+              images: [],
+              name: 'pushups',
+              videos: []
+            }, {
+              completed: false,
+              description: 'just do it',
+              id: '3345',
+              images: [],
+              name: 'situps',
+              videos: []
+            }]
+          }]
+        })
       );
     }
   }, [dispatch, items]);
@@ -28,17 +59,18 @@ const ItemList = () => {
       <FlatList
         style={styles.flatlist}
         contentContainerStyle={styles.contentContainerStyle}
-        keyExtractor={(item: {id: string}) => item.id}
-        renderItem={({item}: {item: Item}) => (
+        keyExtractor={(item: { id: string }) => item.id}
+        renderItem={({ item }: { item: CustomisedExercise }) => (
           <TouchableOpacity
             key={item.id}
             onPress={() => {
-              dispatch(selectItem(item));
+              dispatch(setExerciseCompleted(item));
               navigation.navigate('Detail');
             }}
-            style={styles.listItem}>
+            style={styles.listItem}
+          >
             <Text numberOfLines={1} style={styles.text}>
-              {item.label}
+              {item.name}
             </Text>
           </TouchableOpacity>
         )}

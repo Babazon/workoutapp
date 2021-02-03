@@ -1,15 +1,15 @@
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import {
   createStackNavigator,
-  StackNavigationOptions,
+  StackNavigationOptions
 } from '@react-navigation/stack';
 import React from 'react';
-import {StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
+import { store } from './domain/state/Redux';
 import ItemDetail from './pages/ItemDetail';
 import ItemList from './pages/ItemList';
-import {store} from './state/Redux';
 
 const StackNavigator = createStackNavigator();
 

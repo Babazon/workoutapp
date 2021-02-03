@@ -1,14 +1,14 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {connect, useSelector} from 'react-redux';
-import {RootState} from '../state/Redux';
-import {getAvatarEmoji} from '../util/getAvatarEmoji';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { connect, useSelector } from 'react-redux';
+import { RootState } from '../domain/state/Redux';
+import { getAvatarEmoji } from '../util/getAvatarEmoji';
 
 const connector = connect();
 
 const ItemDetail = () => {
   const selectedItem = useSelector((state: RootState) => {
-    return state.selectedItem;
+    return state.auth.user;
   });
   if (!selectedItem) {
     return <></>;
@@ -20,9 +20,8 @@ const ItemDetail = () => {
       </View>
       <View>
         <Text
-          style={
-            styles.header
-          }>{`${selectedItem.id} ${selectedItem.label}`}</Text>
+          style={styles.header}
+        >{`${selectedItem.id} ${selectedItem.firstname}`}</Text>
       </View>
       <View>
         <Text style={styles.header}> </Text>
