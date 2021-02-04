@@ -1,15 +1,14 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect, useSelector } from 'react-redux';
-import { RootState, useAppDispatch, setExerciseCompleted, setExerciseIncomplete } from '../domain/state/Redux';
 import { getAvatarEmoji } from '../util/getAvatarEmoji';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
-const connector = connect();
+import { RootState, useAppDispatch } from '../domain/state/redux';
+import { setExerciseIncomplete, setExerciseCompleted } from '../domain/state/actions';
 
 const ExerciseDetail = () => {
-  const selectedExercise = useSelector((state: RootState) =>  state.workout.selectedExercise);
-  const trainer = useSelector((state: RootState)=> state.workout.trainingPlan?.assigner);
+  const selectedExercise = useSelector((state: RootState) => state.workout.selectedExercise);
+  const trainer = useSelector((state: RootState) => state.workout.trainingPlan?.assigner);
   const dispatch = useAppDispatch();
 
   if (!selectedExercise) {
@@ -27,17 +26,17 @@ const ExerciseDetail = () => {
         >{`${trainer?.name} assigned you`} {selectedExercise.reps ?? `${selectedExercise.duration} minutes of`} {selectedExercise.name}</Text>
       </View>
       <View>
-        <TouchableOpacity onPress={()=>{
-          dispatch(selectedExercise.completed ? setExerciseIncomplete(selectedExercise): setExerciseCompleted(selectedExercise))
+        <TouchableOpacity onPress={() => {
+          dispatch(selectedExercise.completed ? setExerciseIncomplete(selectedExercise) : setExerciseCompleted(selectedExercise))
         }}>
-        <Text style={styles.header}>Set exercise {selectedExercise.completed ? 'incomplete': 'complete'}</Text>
+          <Text style={styles.header}>Set exercise {selectedExercise.completed ? 'incomplete' : 'complete'}</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
   );
 };
 
-export default connector(ExerciseDetail);
+export default connect()(ExerciseDetail);
 
 const styles = StyleSheet.create({
   avatarStyle: {
