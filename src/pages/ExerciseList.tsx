@@ -8,6 +8,7 @@ import { setSelectedExercise, setExerciseCompleted, setExerciseIncomplete } from
 import { useAppDispatch } from '../domain/state/redux';
 import DaySelector from '../components/DaySelector';
 import { getExercisesForSelectedIndex } from '../domain/state/selectors';
+import { ExerciseListItem } from '../components/ExerciseListItem';
 
 const ExerciseList = () => {
   const items = useSelector(getExercisesForSelectedIndex);
@@ -22,21 +23,7 @@ const ExerciseList = () => {
           contentContainerStyle={styles.contentContainerStyle}
           keyExtractor={(item: { id: string }) => item.id}
           renderItem={({ item }: { item: CustomisedExercise }) => (
-            <TouchableOpacity
-              key={item.id}
-              onLongPress={() => {
-                dispatch(item.completed ? setExerciseIncomplete(item) : setExerciseCompleted(item))
-              }}
-              onPress={() => {
-                dispatch(setSelectedExercise(item));
-                navigation.navigate('Detail');
-              }}
-              style={StyleSheet.flatten([styles.listItem, { opacity: item.completed ? 0.5 : 1, backgroundColor: item.completed ? 'gray' : 'green' }])}
-            >
-              <Text numberOfLines={1} style={StyleSheet.flatten([styles.text, { fontStyle: item.completed ? 'italic' : 'normal' } as TextStyle])}>
-                {item.reps ?? `${item.duration} min`} {item.name} {item.completed ? '✔️' : '💤'}
-              </Text>
-            </TouchableOpacity>
+            <ExerciseListItem item={item} />
           )}
           data={items}
         />)
