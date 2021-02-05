@@ -3,7 +3,6 @@ import { createReducer, PayloadAction, Action, combineReducers } from "@reduxjs/
 import { TrainingPlan } from "../models/TrainingPlan";
 import { CustomisedExercise } from "../models/CustomisedExercise.model";
 import { getWeek } from "../../util/getWeekIndex";
-import { WorkoutSession } from "../models/WorkoutSession.model";
 import trainingPlan from "../../mocks/mockTrainingPlan";
 import { findAndToggleExercise } from "../../util/findAndtoggleExercise";
 
@@ -39,14 +38,6 @@ const workoutInitialState: WorkoutState = {
   selectedYear: new Date().getFullYear(),
   sessionActive: false
 };
-
-console.log({
-  trainingPlan,
-  day: new Date().getDay() - 1,
-  week: getWeek(new Date()),
-  year: new Date().getFullYear
-});
-
 
 
 const workoutReducer = createReducer(workoutInitialState, {
