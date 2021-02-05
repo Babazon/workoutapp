@@ -5,6 +5,7 @@ import { CustomisedExercise } from "../models/CustomisedExercise.model";
 import { getWeek } from "../../util/getWeekIndex";
 import { WorkoutSession } from "../models/WorkoutSession.model";
 import trainingPlan from "../../mocks/mockTrainingPlan";
+import { findAndToggleExercise } from "../../util/findAndtoggleExercise";
 
 interface AuthState { email: string, password: string, loggedIn: boolean, showError: boolean, user?: User }
 
@@ -29,13 +30,14 @@ const authReducer = createReducer(authInitialState, {
   },
 })
 
-interface WorkoutState { trainingPlan?: TrainingPlan, selectedExercise?: CustomisedExercise, selectedDayIndex: number, selectedWeekIndex: number, selectedYear: number }
+export interface WorkoutState { trainingPlan?: TrainingPlan, selectedExercise?: CustomisedExercise, selectedDayIndex: number, selectedWeekIndex: number, selectedYear: number, sessionActive: boolean }
 
 const workoutInitialState: WorkoutState = {
   trainingPlan: trainingPlan,
   selectedDayIndex: new Date().getDay() - 1, // today's day index, starting monday
   selectedWeekIndex: getWeek(new Date()), // current week index
-  selectedYear: new Date().getFullYear()
+  selectedYear: new Date().getFullYear(),
+  sessionActive: false
 };
 
 console.log({
@@ -51,29 +53,11 @@ const workoutReducer = createReducer(workoutInitialState, {
   SET_TRAINING_PLAN(state: WorkoutState, action: PayloadAction<TrainingPlan>) { state.trainingPlan = action.payload },
   SET_EXERCISE_COMPLETED(state: WorkoutState, action: PayloadAction<CustomisedExercise>) {
     // would be easier with reference, just mutate the model
-    const workoutSessionForSelectedYear = state.trainingPlan?.workoutSessionsByYear.find((workoutSession: { year: number }) => workoutSession.year === state.selectedYear);
-    const workoutSessionForSelectedWeek = workoutSessionForSelectedYear?.workoutSessionsByWeek
-      .find((workoutSession: { week: number, workoutSessions: WorkoutSession[] }) => workoutSession.week = state.selectedWeekIndex)
-    if (workoutSessionForSelectedWeek) {
-      const workoutSessionForSelectedDay = workoutSessionForSelectedWeek.workoutSessions.find((workoutSession: { day: number, exercises: CustomisedExercise[] }) => workoutSession.day === state.selectedDayIndex);
-      if (workoutSessionForSelectedDay) {
-        workoutSessionForSelectedDay.exercises.forEach((exercise: CustomisedExercise) => { if (exercise.id === action.payload.id) { exercise.completed = true; } })
-      }
-    }
+    state = findAndToggleExercise(state, action.payload, true);
     if (state.selectedExercise) state.selectedExercise.completed = true;
   },
   SET_EXERCISE_INCOMPLETE(state: WorkoutState, action: PayloadAction<CustomisedExercise>) {
-    // would be easier with reference, just mutate the model
-    const workoutSessionForSelectedYear = state.trainingPlan?.workoutSessionsByYear.find((workoutSession: { year: number }) => workoutSession.year === state.selectedYear);
-
-    const workoutSessionForSelectedWeek = workoutSessionForSelectedYear?.workoutSessionsByWeek
-      .find((workoutSession: { week: number, workoutSessions: WorkoutSession[] }) => workoutSession.week = state.selectedWeekIndex)
-    if (workoutSessionForSelectedWeek) {
-      const workoutSessionForSelectedDay = workoutSessionForSelectedWeek.workoutSessions.find((workoutSession: { day: number, exercises: CustomisedExercise[] }) => workoutSession.day === state.selectedDayIndex);
-      if (workoutSessionForSelectedDay) {
-        workoutSessionForSelectedDay.exercises.forEach((exercise: CustomisedExercise) => { if (exercise.id === action.payload.id) { exercise.completed = false; } })
-      }
-    }
+    state = findAndToggleExercise(state, action.payload, false);
     if (state.selectedExercise) state.selectedExercise.completed = false;
   },
   LOGOUT(state: WorkoutState, _: Action) { state = workoutInitialState },
@@ -92,9 +76,18 @@ const workoutReducer = createReducer(workoutInitialState, {
     }
   },
   SET_SELECTED_YEAR(state: WorkoutState, action: PayloadAction<number>) {
-    console.log('setting selected year. Was', state.selectedYear, 'becoming', action.payload);
     state.selectedYear = action.payload
   },
+  SET_SESSION_ACTIVE(state: WorkoutState, action: Action) {
+    // start session sets day to today. you can't to tomorrow's session
+    state.selectedDayIndex = new Date().getDay() - 1;
+    state.selectedWeekIndex = getWeek(new Date());
+    state.selectedYear = new Date().getFullYear();
+    state.sessionActive = true;
+  },
+  SET_SESSION_INACTIVE(state: WorkoutState, action: Action) {
+    state.sessionActive = false;
+  }
 })
 
 export const rootReducer = combineReducers({

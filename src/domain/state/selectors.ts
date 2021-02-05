@@ -21,3 +21,4 @@ export const getExercisesForSelectedIndex = (state: RootState) => {
 export const getSelectedDayIndex = (state: RootState) => state.workout.selectedDayIndex
 export const getSelectedWeekIndex = (state: RootState) => state.workout.selectedWeekIndex
 export const getSelectedYear = (state: RootState) => state.workout.selectedYear
+export const workoutSessionActive = (state: RootState) => state.workout.sessionActive

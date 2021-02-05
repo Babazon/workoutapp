@@ -26,13 +26,13 @@ export const ExerciseListItem = (props: { item: CustomisedExercise }) => {
         <Image source={{ uri: item.images[0] ?? '' }} style={styles.avatarIcon} />
       </View>
       <View style={styles.content}>
-        <Text numberOfLines={1} style={StyleSheet.flatten([styles.text, { fontStyle: item.completed ? 'italic' : 'normal' }])}>
+        <Text numberOfLines={1} style={styles.text}>
           Exercise: {item.name}
         </Text>
-        <Text numberOfLines={1} style={StyleSheet.flatten([styles.text, { fontStyle: item.completed ? 'italic' : 'normal' }])}>
+        <Text numberOfLines={1} style={styles.text}>
           Desription: {item.description}
         </Text>
-        <Text numberOfLines={1} style={StyleSheet.flatten([styles.text, { fontStyle: item.completed ? 'italic' : 'normal' }])}>
+        <Text numberOfLines={1} style={styles.text}>
           Amount: {item.reps ?? `${item.duration} min`}
         </Text>
         <Text numberOfLines={1} style={StyleSheet.flatten([styles.text, { fontStyle: item.completed ? 'italic' : 'normal' }])}>
