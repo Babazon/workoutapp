@@ -1,9 +1,7 @@
-import { WorkoutSession } from "../src/domain/models/WorkoutSession.model";
+import { CustomisedExercise } from "../src/domain/models/CustomisedExercise.model";
 import { WorkoutState } from "../src/domain/state/reducers";
 import trainingPlan from "../src/mocks/mockTrainingPlan";
-import { getWeek } from "../src/util/getWeekIndex";
 import { findAndToggleExercise } from "../src/util/findAndtoggleExercise";
-import { CustomisedExercise } from "../src/domain/models/CustomisedExercise.model";
 
 describe('Toggle Exercise Completed', () => {
 

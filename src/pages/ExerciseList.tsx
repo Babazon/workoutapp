@@ -1,19 +1,14 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View, TextStyle } from 'react-native';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { connect, useSelector } from 'react-redux';
-import { CustomisedExercise } from '../domain/models/CustomisedExercise.model';
-import { setSelectedExercise, setExerciseCompleted, setExerciseIncomplete } from '../domain/state/actions';
-import { useAppDispatch } from '../domain/state/redux';
 import DaySelector from '../components/DaySelector';
-import { getExercisesForSelectedIndex } from '../domain/state/selectors';
 import { ExerciseListItem } from '../components/ExerciseListItem';
+import { CustomisedExercise } from '../domain/models/CustomisedExercise.model';
+import { getExercisesForSelectedIndex } from '../domain/state/selectors';
 
 const ExerciseList = () => {
   const items = useSelector(getExercisesForSelectedIndex);
-  const dispatch = useAppDispatch();
-  const navigation = useNavigation();
   return (
     <View style={styles.wrapper}>
       <DaySelector />

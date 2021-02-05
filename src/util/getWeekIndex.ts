@@ -13,9 +13,3 @@ export const getWeek = (date: Date = new Date()) => {
   return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
     - 3 + (week1.getDay() + 6) % 7) / 7);
 }
-
-// Returns the four-digit year corresponding to the ISO week of the date.
-const getWeekYear = (date: Date) => {
-  date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
-  return date.getFullYear();
-}
