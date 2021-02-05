@@ -61,12 +61,12 @@ const DaySelector = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.rowContainer}>
+      <View style={styles.rowContainerYear}>
         <TouchableOpacity style={styles.chevronButton} onPress={decrementYear}><Text>{'◀️'}</Text></TouchableOpacity>
         <Text style={styles.title}>{selectedYear}</Text>
         <TouchableOpacity style={styles.chevronButton} onPress={incrementYear}><Text>{'▶️'}</Text></TouchableOpacity>
       </View>
-      <View style={styles.rowContainer}>
+      <View style={styles.rowContainerWeek}>
         <TouchableOpacity style={styles.chevronButton} onPress={decrementWeek}><Text>{'⏪'}</Text></TouchableOpacity>
         <Text style={styles.title}>Week {selectedWeekIndex}</Text>
         <TouchableOpacity style={styles.chevronButton} onPress={incrementWeek}><Text>{'⏩'}</Text></TouchableOpacity>
@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 4
   },
   daysWrapper: {
-    backgroundColor: 'red',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center'
@@ -111,12 +110,19 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'stretch',
   },
-  rowContainer: {
+  rowContainerYear: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'teal',
+  },
+  rowContainerWeek: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'pink'
   },
   title: {
     fontSize: 24,

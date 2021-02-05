@@ -9,11 +9,13 @@ export const getShowError = (state: RootState) => state.auth.showError;
 
 export const getExerciseTitle = (state: RootState) => state.workout.selectedExercise?.name
 export const getTodayExercise = (state: RootState) => {
-  const workoutForWeek = state.workout.trainingPlan?.workoutSessions.find((session: { week: number, workoutSessions: WorkoutSession[] }) => session.week === getWeek(new Date()));
+  const workoutForYear = state.workout.trainingPlan?.workoutSessionsByYear.find((session: { year: number }) => session.year === new Date().getFullYear());
+  const workoutForWeek = workoutForYear?.workoutSessionsByWeek.find((session: { week: number, workoutSessions: WorkoutSession[] }) => session.week === getWeek(new Date()));
   return workoutForWeek?.workoutSessions.find((session: WorkoutSession) => session.day === new Date().getDay() - 1)?.exercises ?? []; // getDay() -1 because Date week starts on sunday
 }
 export const getExercisesForSelectedIndex = (state: RootState) => {
-  const workoutForWeek = state.workout.trainingPlan?.workoutSessions.find((session: { week: number, workoutSessions: WorkoutSession[] }) => session.week === state.workout.selectedWeekIndex);
+  const workoutForYear = state.workout.trainingPlan?.workoutSessionsByYear.find((session: { year: number }) => session.year === state.workout.selectedYear);
+  const workoutForWeek = workoutForYear?.workoutSessionsByWeek.find((session: { week: number, workoutSessions: WorkoutSession[] }) => session.week === state.workout.selectedWeekIndex);
   return workoutForWeek?.workoutSessions.find((session: WorkoutSession) => session.day === state.workout.selectedDayIndex)?.exercises ?? [];
 }
 export const getSelectedDayIndex = (state: RootState) => state.workout.selectedDayIndex

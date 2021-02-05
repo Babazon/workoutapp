@@ -51,7 +51,8 @@ const workoutReducer = createReducer(workoutInitialState, {
   SET_TRAINING_PLAN(state: WorkoutState, action: PayloadAction<TrainingPlan>) { state.trainingPlan = action.payload },
   SET_EXERCISE_COMPLETED(state: WorkoutState, action: PayloadAction<CustomisedExercise>) {
     // would be easier with reference, just mutate the model
-    const workoutSessionForSelectedWeek = state.trainingPlan?.workoutSessions
+    const workoutSessionForSelectedYear = state.trainingPlan?.workoutSessionsByYear.find((workoutSession: { year: number }) => workoutSession.year === state.selectedYear);
+    const workoutSessionForSelectedWeek = workoutSessionForSelectedYear?.workoutSessionsByWeek
       .find((workoutSession: { week: number, workoutSessions: WorkoutSession[] }) => workoutSession.week = state.selectedWeekIndex)
     if (workoutSessionForSelectedWeek) {
       const workoutSessionForSelectedDay = workoutSessionForSelectedWeek.workoutSessions.find((workoutSession: { day: number, exercises: CustomisedExercise[] }) => workoutSession.day === state.selectedDayIndex);
@@ -63,7 +64,9 @@ const workoutReducer = createReducer(workoutInitialState, {
   },
   SET_EXERCISE_INCOMPLETE(state: WorkoutState, action: PayloadAction<CustomisedExercise>) {
     // would be easier with reference, just mutate the model
-    const workoutSessionForSelectedWeek = state.trainingPlan?.workoutSessions
+    const workoutSessionForSelectedYear = state.trainingPlan?.workoutSessionsByYear.find((workoutSession: { year: number }) => workoutSession.year === state.selectedYear);
+
+    const workoutSessionForSelectedWeek = workoutSessionForSelectedYear?.workoutSessionsByWeek
       .find((workoutSession: { week: number, workoutSessions: WorkoutSession[] }) => workoutSession.week = state.selectedWeekIndex)
     if (workoutSessionForSelectedWeek) {
       const workoutSessionForSelectedDay = workoutSessionForSelectedWeek.workoutSessions.find((workoutSession: { day: number, exercises: CustomisedExercise[] }) => workoutSession.day === state.selectedDayIndex);
@@ -88,8 +91,10 @@ const workoutReducer = createReducer(workoutInitialState, {
       state.selectedWeekIndex = action.payload
     }
   },
-  SET_SELECTED_YEAR(state: WorkoutState, action: PayloadAction<number>) { state.selectedYear = action.payload },
-
+  SET_SELECTED_YEAR(state: WorkoutState, action: PayloadAction<number>) {
+    console.log('setting selected year. Was', state.selectedYear, 'becoming', action.payload);
+    state.selectedYear = action.payload
+  },
 })
 
 export const rootReducer = combineReducers({
