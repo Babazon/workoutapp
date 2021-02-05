@@ -20,14 +20,14 @@ const Auth = () => {
       <Text style={styles.title}>Vätiön</Text>
       <View style={styles.labelWrapper}>
         <Text style={styles.label}>Email</Text>
-        <TextInput value={email} onChangeText={setEmailInStore} style={styles.input} placeholder={'email'} />
+        <TextInput value={email} onChangeText={setEmailInStore} style={styles.input} placeholder={'hans.mustermann@gmx.de'} />
       </View>
       <View style={styles.labelWrapper}>
         <Text style={styles.label}>Password</Text>
-        <TextInput value={password} onChangeText={setPasswordInStore} style={styles.input} placeholder={'password'} secureTextEntry />
+        <TextInput value={password} onChangeText={setPasswordInStore} style={styles.input} placeholder={'******'} secureTextEntry />
       </View>
-      {showError && <Text style={styles.errorText}>An error happened..</Text>}
-      <Button title={'Log in'} onPress={attemptLogin} color='white' />
+      {showError && <Text style={styles.errorText}>An error occurred..</Text>}
+      <Button title={'Log in'} onPress={attemptLogin} color='teal' />
     </View>
   )
 }
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: 'center',
-    backgroundColor: 'teal',
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
   labelWrapper: {
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   input: {
     backgroundColor: 'white',
@@ -62,6 +61,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     width: 300,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderStyle: 'solid',
+    borderColor: 'gray'
   },
   title: {
     fontWeight: 'bold',

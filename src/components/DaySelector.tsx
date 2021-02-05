@@ -2,45 +2,53 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useAppDispatch } from '../domain/state/redux';
 import { useSelector } from 'react-redux';
-import { getSelectedDayIndex } from '../domain/state/selectors';
+import { getSelectedDayIndex, getSelectedWeekIndex, getSelectedYear } from '../domain/state/selectors';
 import { connect } from 'react-redux';
-import { setSelectedDayIndex } from '../domain/state/actions';
+import { setSelectedDayIndex, setSelectedYear, setSelectedWeekIndex } from '../domain/state/actions';
 
 const DAYS_OF_THE_WEEK: { index: number, text: string }[] = [
   {
     index: 0,
-    text: 'Sun'
-  },
-  {
-    index: 1,
     text: 'Mon'
   },
   {
-    index: 2,
+    index: 1,
     text: 'Tue'
   },
   {
-    index: 3,
+    index: 2,
     text: 'Wed'
   },
   {
-    index: 4,
+    index: 3,
     text: 'Thu'
   },
   {
-    index: 5,
+    index: 4,
     text: 'Fri'
   },
   {
-    index: 6,
+    index: 5,
     text: 'Sat'
+  },
+  {
+    index: 6,
+    text: 'Sun'
   },
 ]
 
 const DaySelector = () => {
   const dispatch = useAppDispatch();
   const selectedDayIndex = useSelector(getSelectedDayIndex);
+  const selectedWeekIndex = useSelector(getSelectedWeekIndex);
+  const selectedYear = useSelector(getSelectedYear);
   const selectDay = (dayIndex: number) => dispatch(setSelectedDayIndex(dayIndex));
+  const decrementYear = () => dispatch(setSelectedYear(selectedYear - 1));
+  const incrementYear = () => dispatch(setSelectedYear(selectedYear + 1));
+  const decrementWeek = () => dispatch(setSelectedWeekIndex(selectedWeekIndex - 1));
+  const incrementWeek = () => dispatch(setSelectedWeekIndex(selectedWeekIndex + 1));
+
+
   const getButtonColor = (dayIndex: number, selectedIndex: number) => {
     if (dayIndex === selectedIndex) {
       return 'lightgreen';
@@ -53,7 +61,16 @@ const DaySelector = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>This Week's Exercises</Text>
+      <View style={styles.rowContainer}>
+        <TouchableOpacity style={styles.chevronButton} onPress={decrementYear}><Text>{'◀️'}</Text></TouchableOpacity>
+        <Text style={styles.title}>{selectedYear}</Text>
+        <TouchableOpacity style={styles.chevronButton} onPress={incrementYear}><Text>{'▶️'}</Text></TouchableOpacity>
+      </View>
+      <View style={styles.rowContainer}>
+        <TouchableOpacity style={styles.chevronButton} onPress={decrementWeek}><Text>{'⏪'}</Text></TouchableOpacity>
+        <Text style={styles.title}>Week {selectedWeekIndex}</Text>
+        <TouchableOpacity style={styles.chevronButton} onPress={incrementWeek}><Text>{'⏩'}</Text></TouchableOpacity>
+      </View>
       <View style={styles.daysWrapper}>
         {DAYS_OF_THE_WEEK.map((day: { index: number, text: string }) => (
           <TouchableOpacity
@@ -71,6 +88,11 @@ const DaySelector = () => {
 export default connect()(DaySelector);
 
 const styles = StyleSheet.create({
+  chevronButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 4
+  },
   daysWrapper: {
     backgroundColor: 'red',
     flexDirection: 'row',
@@ -89,6 +111,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center'
   },
   title: {

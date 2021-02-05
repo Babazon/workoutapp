@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { SET_EMAIL, SET_PASSWORD, LOGIN_SUCCESS, LOGIN_FAIL, SET_USER, LOGOUT, LOGIN, SET_TRAINING_PLAN, SET_EXERCISE_COMPLETED, SET_EXERCISE_INCOMPLETE, SET_SELECTED_EXERCISE, SET_SELECTED_DAY_INDEX } from "./actionTypes";
+import { SET_EMAIL, SET_PASSWORD, LOGIN_SUCCESS, LOGIN_FAIL, SET_USER, LOGOUT, LOGIN, SET_TRAINING_PLAN, SET_EXERCISE_COMPLETED, SET_EXERCISE_INCOMPLETE, SET_SELECTED_EXERCISE, SET_SELECTED_DAY_INDEX, SET_SELECTED_WEEK_INDEX, SET_SELECTED_YEAR } from "./actionTypes";
 import { User } from "../models/User.model";
 import { TrainingPlan } from "../models/TrainingPlan";
 import { CustomisedExercise } from "../models/CustomisedExercise.model";
@@ -17,3 +17,5 @@ export const setExerciseCompleted = createAction<CustomisedExercise>(SET_EXERCIS
 export const setExerciseIncomplete = createAction<CustomisedExercise>(SET_EXERCISE_INCOMPLETE);
 export const setSelectedExercise = createAction<CustomisedExercise>(SET_SELECTED_EXERCISE);
 export const setSelectedDayIndex = createAction<number>(SET_SELECTED_DAY_INDEX);
+export const setSelectedWeekIndex = createAction<number>(SET_SELECTED_WEEK_INDEX);
+export const setSelectedYear = createAction<number>(SET_SELECTED_YEAR);

@@ -16,32 +16,38 @@ const ExerciseList = () => {
   return (
     <View style={styles.wrapper}>
       <DaySelector />
-      <FlatList
-        style={styles.flatlist}
-        contentContainerStyle={styles.contentContainerStyle}
-        keyExtractor={(item: { id: string }) => item.id}
-        renderItem={({ item }: { item: CustomisedExercise }) => (
-          <TouchableOpacity
-            key={item.id}
-            onLongPress={() => {
-              dispatch(item.completed ? setExerciseIncomplete(item) : setExerciseCompleted(item))
-            }}
-            onPress={() => {
-              dispatch(setSelectedExercise(item));
-              navigation.navigate('Detail');
-            }}
-            style={StyleSheet.flatten([styles.listItem, { opacity: item.completed ? 0.5 : 1, backgroundColor: item.completed ? 'gray' : 'green' }])}
-          >
-            <Text numberOfLines={1} style={StyleSheet.flatten([styles.text, { fontStyle: item.completed ? 'italic' : 'normal' } as TextStyle])}>
-              {item.reps ?? `${item.duration} min`} {item.name} {item.completed ? '✔️' : '💤'}
-            </Text>
-          </TouchableOpacity>
-        )}
-        data={items}
-      />
-      <View style={styles.tipWrapper}>
-        <Text style={styles.tip}>Tip: Press and hold an exercise to complete it!</Text>
-      </View>
+      {items.length > 0 && (
+        <FlatList
+          style={styles.flatlist}
+          contentContainerStyle={styles.contentContainerStyle}
+          keyExtractor={(item: { id: string }) => item.id}
+          renderItem={({ item }: { item: CustomisedExercise }) => (
+            <TouchableOpacity
+              key={item.id}
+              onLongPress={() => {
+                dispatch(item.completed ? setExerciseIncomplete(item) : setExerciseCompleted(item))
+              }}
+              onPress={() => {
+                dispatch(setSelectedExercise(item));
+                navigation.navigate('Detail');
+              }}
+              style={StyleSheet.flatten([styles.listItem, { opacity: item.completed ? 0.5 : 1, backgroundColor: item.completed ? 'gray' : 'green' }])}
+            >
+              <Text numberOfLines={1} style={StyleSheet.flatten([styles.text, { fontStyle: item.completed ? 'italic' : 'normal' } as TextStyle])}>
+                {item.reps ?? `${item.duration} min`} {item.name} {item.completed ? '✔️' : '💤'}
+              </Text>
+            </TouchableOpacity>
+          )}
+          data={items}
+        />)
+      }
+      {!items.length && <View style={styles.centered}><Text>No exercises for the selected day..</Text></View>}
+      {items.length > 0 && (
+        <View style={styles.tipWrapper}>
+          <Text style={styles.tip}>Tip: Press and hold an exercise to complete it!</Text>
+        </View>
+      )
+      }
     </View>
   );
 };
@@ -49,6 +55,11 @@ const ExerciseList = () => {
 export default connect()(ExerciseList);
 
 const styles = StyleSheet.create({
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   tip: {
     fontStyle: 'italic',
     color: 'lightgray',
