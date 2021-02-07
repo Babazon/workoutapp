@@ -44,7 +44,7 @@ export const Navigator = () => {
             name="Detail"
             component={ExerciseDetail}
             options={{
-              title: exerciseTitle,
+              title: exerciseTitle as string,
               ...sharedHeaderOptions,
             }}
           />

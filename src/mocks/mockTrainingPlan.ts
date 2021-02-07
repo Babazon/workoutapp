@@ -1,5 +1,6 @@
 import * as uuid from 'uuid';
 import { TrainingPlan } from '../domain/models/TrainingPlan';
+import { ExerciseName } from '../domain/models/Exercise.model';
 
 const trainingPlan: TrainingPlan = {
   assignee: {
@@ -27,7 +28,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -35,7 +36,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -44,7 +45,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -54,7 +55,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Crunches",
+            name: ExerciseName.crunch,
             reps: 120,
             videos: []
           }, {
@@ -62,7 +63,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Squats",
+            name: ExerciseName.squat,
             reps: 100,
             videos: []
           }]
@@ -73,7 +74,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Reverse Crunch",
+            name: ExerciseName.reverseCrunch,
             reps: 200,
             videos: []
           }, {
@@ -81,7 +82,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Bicep Curls",
+            name: ExerciseName.bicepCurl,
             reps: 500,
             videos: []
           }, {
@@ -90,7 +91,7 @@ const trainingPlan: TrainingPlan = {
             duration: 50,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -100,7 +101,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -108,7 +109,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Leg Curls",
+            name: ExerciseName.legCurls,
             reps: 100,
             videos: []
           }]
@@ -119,7 +120,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -127,7 +128,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -136,7 +137,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -146,7 +147,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -154,7 +155,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -163,7 +164,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -173,7 +174,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -181,7 +182,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -190,14 +191,14 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }, {
             completed: false,
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -206,7 +207,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }]
@@ -220,7 +221,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -228,7 +229,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -237,7 +238,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -247,7 +248,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Crunches",
+            name: ExerciseName.crunch,
             reps: 120,
             videos: []
           }, {
@@ -255,7 +256,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Squats",
+            name: ExerciseName.squat,
             reps: 100,
             videos: []
           }]
@@ -266,7 +267,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Reverse Crunch",
+            name: ExerciseName.reverseCrunch,
             reps: 200,
             videos: []
           }, {
@@ -274,7 +275,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Bicep Curls",
+            name: ExerciseName.bicepCurl,
             reps: 500,
             videos: []
           }, {
@@ -283,7 +284,7 @@ const trainingPlan: TrainingPlan = {
             duration: 50,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -293,7 +294,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -301,7 +302,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Leg Curls",
+            name: ExerciseName.legCurls,
             reps: 100,
             videos: []
           }]
@@ -312,7 +313,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -320,7 +321,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -329,7 +330,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -339,7 +340,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -347,7 +348,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -356,7 +357,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -366,7 +367,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -374,7 +375,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -383,14 +384,14 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }, {
             completed: false,
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -399,7 +400,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }]
@@ -413,7 +414,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -421,7 +422,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -430,7 +431,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -440,7 +441,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Crunches",
+            name: ExerciseName.crunch,
             reps: 120,
             videos: []
           }, {
@@ -448,7 +449,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Squats",
+            name: ExerciseName.squat,
             reps: 100,
             videos: []
           }]
@@ -459,7 +460,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Reverse Crunch",
+            name: ExerciseName.reverseCrunch,
             reps: 200,
             videos: []
           }, {
@@ -467,7 +468,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Bicep Curls",
+            name: ExerciseName.bicepCurl,
             reps: 500,
             videos: []
           }, {
@@ -476,7 +477,7 @@ const trainingPlan: TrainingPlan = {
             duration: 50,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -486,7 +487,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -494,7 +495,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Leg Curls",
+            name: ExerciseName.legCurls,
             reps: 100,
             videos: []
           }]
@@ -505,7 +506,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -513,7 +514,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -522,7 +523,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -532,7 +533,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -540,7 +541,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -549,7 +550,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -559,7 +560,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -567,7 +568,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -576,14 +577,14 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }, {
             completed: false,
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -592,7 +593,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }]
@@ -606,7 +607,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -614,7 +615,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -623,7 +624,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -633,7 +634,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Crunches",
+            name: ExerciseName.crunch,
             reps: 120,
             videos: []
           }, {
@@ -641,7 +642,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Squats",
+            name: ExerciseName.squat,
             reps: 100,
             videos: []
           }]
@@ -652,7 +653,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Reverse Crunch",
+            name: ExerciseName.reverseCrunch,
             reps: 200,
             videos: []
           }, {
@@ -660,7 +661,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Bicep Curls",
+            name: ExerciseName.bicepCurl,
             reps: 500,
             videos: []
           }, {
@@ -669,7 +670,7 @@ const trainingPlan: TrainingPlan = {
             duration: 50,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -679,7 +680,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -687,7 +688,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Leg Curls",
+            name: ExerciseName.legCurls,
             reps: 100,
             videos: []
           }]
@@ -698,7 +699,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -706,7 +707,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -715,7 +716,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -725,7 +726,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -733,7 +734,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -742,7 +743,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -752,7 +753,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -760,7 +761,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -769,14 +770,14 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }, {
             completed: false,
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -785,7 +786,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }]
@@ -799,7 +800,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -807,7 +808,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -816,7 +817,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -826,7 +827,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Crunches",
+            name: ExerciseName.crunch,
             reps: 120,
             videos: []
           }, {
@@ -834,7 +835,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Squats",
+            name: ExerciseName.squat,
             reps: 100,
             videos: []
           }]
@@ -845,7 +846,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Reverse Crunch",
+            name: ExerciseName.reverseCrunch,
             reps: 200,
             videos: []
           }, {
@@ -853,7 +854,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Bicep Curls",
+            name: ExerciseName.bicepCurl,
             reps: 500,
             videos: []
           }, {
@@ -862,7 +863,7 @@ const trainingPlan: TrainingPlan = {
             duration: 50,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -872,7 +873,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -880,7 +881,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Leg Curls",
+            name: ExerciseName.legCurls,
             reps: 100,
             videos: []
           }]
@@ -891,7 +892,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -899,7 +900,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -908,7 +909,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -918,7 +919,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -926,7 +927,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -935,7 +936,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -945,7 +946,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -953,7 +954,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -962,14 +963,14 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }, {
             completed: false,
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -978,7 +979,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }]
@@ -992,7 +993,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -1000,7 +1001,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -1009,7 +1010,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -1019,7 +1020,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Crunches",
+            name: ExerciseName.crunch,
             reps: 120,
             videos: []
           }, {
@@ -1027,7 +1028,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Squats",
+            name: ExerciseName.squat,
             reps: 100,
             videos: []
           }]
@@ -1038,7 +1039,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Reverse Crunch",
+            name: ExerciseName.reverseCrunch,
             reps: 200,
             videos: []
           }, {
@@ -1046,7 +1047,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Bicep Curls",
+            name: ExerciseName.bicepCurl,
             reps: 500,
             videos: []
           }, {
@@ -1055,7 +1056,7 @@ const trainingPlan: TrainingPlan = {
             duration: 50,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -1065,7 +1066,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -1073,7 +1074,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Leg Curls",
+            name: ExerciseName.legCurls,
             reps: 100,
             videos: []
           }]
@@ -1084,7 +1085,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Push Ups",
+            name: ExerciseName.pushUp,
             reps: 20,
             videos: []
           }, {
@@ -1092,7 +1093,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -1101,7 +1102,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -1111,7 +1112,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -1119,7 +1120,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -1128,7 +1129,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }, {
@@ -1138,7 +1139,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 20,
             videos: []
           }, {
@@ -1146,7 +1147,7 @@ const trainingPlan: TrainingPlan = {
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Pull Ups",
+            name: ExerciseName.pullUp,
             reps: 10,
             videos: []
           }, {
@@ -1155,14 +1156,14 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }, {
             completed: false,
             description: "just do it",
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Sit Ups",
+            name: ExerciseName.sitUp,
             reps: 100,
             videos: []
           }, {
@@ -1171,7 +1172,7 @@ const trainingPlan: TrainingPlan = {
             duration: 45,
             id: uuid.v4(),
             images: ["https://via.placeholder.com/300", "https://via.placeholder.com/300", "https://via.placeholder.com/300"],
-            name: "Planking",
+            name: ExerciseName.plank,
             videos: []
           }]
         }]
