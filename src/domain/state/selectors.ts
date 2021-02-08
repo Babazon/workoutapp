@@ -1,6 +1,7 @@
 import { RootState } from "./redux";
 import { WorkoutSession } from "../models/WorkoutSession.model";
 import { getWeek } from "../../util/getWeekIndex";
+import { CustomisedExercise } from "../models/CustomisedExercise.model";
 
 export const getEmail = (state: RootState) => state.auth.email;
 export const getPassword = (state: RootState) => state.auth.password;
@@ -16,7 +17,15 @@ export const getTodayExercise = (state: RootState) => {
 export const getExercisesForSelectedIndex = (state: RootState) => {
   const workoutForYear = state.workout.trainingPlan?.workoutSessionsByYear.find((session: { year: number }) => session.year === state.workout.selectedYear);
   const workoutForWeek = workoutForYear?.workoutSessionsByWeek.find((session: { week: number, workoutSessions: WorkoutSession[] }) => session.week === state.workout.selectedWeekIndex);
-  return workoutForWeek?.workoutSessions.find((session: WorkoutSession) => session.day === state.workout.selectedDayIndex)?.exercises ?? [];
+  const exercises = (workoutForWeek?.workoutSessions.find((session: WorkoutSession) => session.day === state.workout.selectedDayIndex)?.exercises ?? []);
+  const sortedExercises = exercises.slice().sort((firstExercise: CustomisedExercise, secondExercise: CustomisedExercise) => {
+    if (firstExercise.orderToBePerformed != null && secondExercise.orderToBePerformed != null) {
+      if (firstExercise.orderToBePerformed < secondExercise.orderToBePerformed) return -1;
+      if (firstExercise.orderToBePerformed > secondExercise.orderToBePerformed) return 1;
+    }
+    return 0;
+  });
+  return sortedExercises;
 }
 export const getSelectedDayIndex = (state: RootState) => state.workout.selectedDayIndex
 export const getSelectedWeekIndex = (state: RootState) => state.workout.selectedWeekIndex

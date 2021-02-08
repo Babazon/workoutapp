@@ -5,7 +5,6 @@ import { findAndToggleExercise } from "../src/util/findAndtoggleExercise";
 
 describe('Toggle Exercise Completed', () => {
 
-
   let state: WorkoutState;
 
   beforeEach(() => {
@@ -32,6 +31,7 @@ describe('Toggle Exercise Completed', () => {
   it('Doesnt do anything if it cant find the exercise', () => {
     const exercise = new CustomisedExercise();
     exercise.id = '666';
+    // since findAndtoggle also toggles the selectedExercise, we dont need to finnd the exercise in state.trainingPlan again
     exercise.completed = false;
     if (exercise) {
       state.selectedExercise = exercise;
