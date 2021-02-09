@@ -18,7 +18,7 @@ export const getExercisesForSelectedIndex = (state: RootState) => {
   const workoutForYear = state.workout.trainingPlan?.workoutSessionsByYear.find((session: { year: number }) => session.year === state.workout.selectedYear);
   const workoutForWeek = workoutForYear?.workoutSessionsByWeek.find((session: { week: number, workoutSessions: WorkoutSession[] }) => session.week === state.workout.selectedWeekIndex);
   const exercises = (workoutForWeek?.workoutSessions.find((session: WorkoutSession) => session.day === state.workout.selectedDayIndex)?.exercises ?? []);
-  const sortedExercises = exercises.slice().sort((firstExercise: CustomisedExercise, secondExercise: CustomisedExercise) => {
+  const sortedExercises = exercises.concat().sort((firstExercise: CustomisedExercise, secondExercise: CustomisedExercise) => {
     if (firstExercise.orderToBePerformed != null && secondExercise.orderToBePerformed != null) {
       if (firstExercise.orderToBePerformed < secondExercise.orderToBePerformed) return -1;
       if (firstExercise.orderToBePerformed > secondExercise.orderToBePerformed) return 1;

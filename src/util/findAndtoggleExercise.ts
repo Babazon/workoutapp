@@ -11,15 +11,19 @@ export const findAndToggleExercise = (state: WorkoutState, payload: CustomisedEx
 
   if (workoutSessionForSelectedWeek) {
     const workoutSessionForSelectedDay = workoutSessionForSelectedWeek.workoutSessions.find((workoutSession: { day: number, exercises: CustomisedExercise[] }) => workoutSession.day === state.selectedDayIndex);
+
     if (workoutSessionForSelectedDay) {
-      workoutSessionForSelectedDay.exercises.forEach((exercise: CustomisedExercise) => {
+      workoutSessionForSelectedDay.exercises = workoutSessionForSelectedDay.exercises.map((exercise: CustomisedExercise) => {
+        // regular complete code
         if (exercise.id === payload.id) {
           exercise.completed = toggleTo;
         }
         // Business requirement to complete any exercise with lower ordertoBePerformed index if this property exists, and the call was made to "complete" as exercise
+        // setting true wiothout checking might cause a needless re-render but better code performance than checking if they need to be toggled, probably
         if (exercise.orderToBePerformed != null && payload.orderToBePerformed != null && exercise.orderToBePerformed < payload.orderToBePerformed && toggleTo) {
           exercise.completed = true
         }
+        return exercise;
       })
     }
   }
